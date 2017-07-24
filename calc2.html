@@ -44,9 +44,15 @@ button{
 			<button class="w3-button w3-blue" ng-click="btn('9')">9</button>
 		</div>
 	<div class="w3-row">
-		<button class="w3-button w3-blue" ng-click="btn('+')">+</button>
+		<button class="w3-button w3-green" ng-click="btn('+')">+</button>
 		<button class="w3-button w3-blue" ng-click="btn('0')">0</button>
-		<button class="w3-button w3-blue" ng-click="answer1()">=</button>
+		<button class="w3-button w3-blue" ng-click="btn('*')">*</button>
+	</div>
+	<div class="w3-row">
+		<button class="w3-button w3-blue" ng-click="btn('-')">-</button>
+		<button class="w3-button w3-blue" ng-click="btn('/')">/</button>
+		<button class="w3-button w3-pink" ng-click="answer1()">=</button>
+
 	</div>
 	
 </div>
@@ -60,24 +66,33 @@ app.controller('myCtrl', function($scope) {
 	$scope.btn = function(x){
 		$scope.data1 += x;
 		a = $scope.data1
+		/*$scope.finalfun(a);*/
 	}
 	$scope.answer1 = function(x){
 	  var arr = ["/","*","+","-"];
+	  var oper = [];
 	  for(var i = 0 ; i <arr.length ; i++){
 	  	for(var j = 0 ; j < a.length; j++)
 	  	{
-	  		/*if(arr[i] == a[j])
+	  		if(arr[i] == a[j])
 	  		{
-	  			console.log("match");
+	  			oper.push(j);
 	  		}
-	  		else{
-	  			console.log("not match");
-	  		}*/
-	  		/*console.log(arr[i]);*/
-	  		console.log(a[j]);
+	  		else{}
+	  			console.log(oper);
 	  	}
 	  }
 	}
+	$scope.finalfun = function()
+	{ 
+		console.log(a);
+		console.log(abc);
+	}
+	
+	/*only this functio nedded*/
+	/*$scope.answer1 =function(){
+		$scope.data1 = eval(a);
+	}*/
 });
 </script>
 </html>
