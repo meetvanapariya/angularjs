@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>hello</title>
+<script src="ang.js"></script>
+<link rel="stylesheet" type="text/css" href="w3.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="w3-teal w3-panel">
+		<h1 class="w3-center">welcome {{name}}</h1>
+	</div>
+	<form ng-init="x={}" ng-submit="createform(x)">
+	Name:<input type = "text" ng-model = "x.name2">
+	Surname:<input type = "text" ng-model = "x.surname">
+	Age:<input type = "text" ng-model = "x.Age">
+	attech photo: <input type = "file" name="photo" file-input="photo" id="photo">
+	<button type="submit">clickhear</button>
+</form>
+	<div class="w3-card-4 div">
+		<div class="w3-panel w3-teal">Form</div>
+	</div>
+</body>
+	<script>
+	angular.module('myApp',[])
+	.controller('myCtrl',function($scope){
+	$scope.createform = function(x){
+
+		console.log($scope.photo);
+		$scope.name1 = x.name2;
+		$scope.surname1 = x.surname;
+		$scope.age1 = x.age;
+
+	}	
+	})
+	.directive('fileInput', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attributes) {
+            element.bind('change', function () {
+                $parse(attributes.fileInput)
+                .assign(scope,element[0].files)
+                scope.$apply()
+            });
+        }
+    };
+}]);
+
+	</script>
+</html>

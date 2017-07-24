@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>calc2</title>
+	<script src="ang.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="w3.css">
+</head>
+<style>
+button{
+	margin: 2px;
+	width: 100px;
+	height: 80px;
+	border-radius: 8px;
+}
+.space1{
+	margin-top: 10px;
+}
+#display1{
+	height: 50px;
+	width: 100%;
+	background-color: lightgrey;
+	text-align: right;
+	font-weight: bold;
+	font-size: 25px;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="w3-panel w3-xxlarge w3-teal w3-center">calculator</div>
+	<div id="display1">{{data1}}{{data2}}</div> 
+	<div class="w3-container space1">
+		<div class="w3-row">
+			<button class="w3-button w3-blue" ng-click="btn('1')">1</button>
+			<button class="w3-button w3-blue" ng-click="btn('2')">2</button>
+			<button class="w3-button w3-blue" ng-click="btn('3')">3</button>
+		</div>
+		<div class="w3-row">
+			<button class="w3-button w3-blue" ng-click="btn('4')">4</button>
+			<button class="w3-button w3-blue" ng-click="btn('5')">5</button>
+			<button class="w3-button w3-blue" ng-click="btn('6')">6</button>
+		</div>
+		<div class="w3-row">
+			<button class="w3-button w3-blue" ng-click="btn('7')">7</button>
+			<button class="w3-button w3-blue" ng-click="btn('8')">8</button>
+			<button class="w3-button w3-blue" ng-click="btn('9')">9</button>
+		</div>
+	<div class="w3-row">
+		<button class="w3-button w3-blue" ng-click="btn('+')">+</button>
+		<button class="w3-button w3-blue" ng-click="btn('0')">0</button>
+		<button class="w3-button w3-blue" ng-click="answer1()">=</button>
+	</div>
+	
+</div>
+</body>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	var a,b,result;
+	$scope.data1 = "";
+	
+	$scope.btn = function(x){
+		$scope.data1 += x;
+		a = $scope.data1
+	}
+	$scope.answer1 = function(x){
+	  var arr = ["/","*","+","-"];
+	  for(var i = 0 ; i <arr.length ; i++){
+	  	for(var j = 0 ; j < a.length; j++)
+	  	{
+	  		/*if(arr[i] == a[j])
+	  		{
+	  			console.log("match");
+	  		}
+	  		else{
+	  			console.log("not match");
+	  		}*/
+	  		/*console.log(arr[i]);*/
+	  		console.log(a[j]);
+	  	}
+	  }
+	}
+});
+</script>
+</html>
